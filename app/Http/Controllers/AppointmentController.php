@@ -9,18 +9,19 @@ class AppointmentController extends Controller
 {
     public function store(Request $request)
     {
-        Appointment::create([
+        $appointment = Appointment::create([
             'cliente' => $request->cliente,
             'profissional' => $request->profissional,
             'servico' => $request->servico,
             'data' => $request->data,
             'horario' => $request->horario,
-            'status' => 'pendente'
+            'status' => 'pendente',
         ]);
 
         return response()->json([
             'success' => true,
-            'message' => 'Agendamento criado'
+            'message' => 'Agendamento criado',
+            'data' => $appointment,
         ]);
     }
 

@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\AppointmentController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ClienteController;
 use App\Http\Controllers\ProfileController;
@@ -14,6 +15,9 @@ Route::get('/cadastro', fn () => view('auth.cadastro'))->name('cadastro');
 Route::get('/recuperar-senha', fn () => view('auth.recuperar-senha'))->name('recuperar-senha');
 
 Route::get('/perfil', [ProfileController::class, 'select'])->name('perfil');
+
+Route::get('/appointments', [AppointmentController::class, 'index']);
+Route::post('/appointments', [AppointmentController::class, 'store']);
 
 Route::prefix('cliente')->name('cliente.')->group(function () {
     Route::redirect('/', '/cliente/dashboard');
